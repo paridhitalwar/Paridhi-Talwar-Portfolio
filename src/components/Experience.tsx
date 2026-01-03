@@ -3,26 +3,16 @@ import { Briefcase, MapPin } from "lucide-react";
 const Experience = () => {
   const experiences = [
     {
-      title: "Founding Product Manager",
+      title: "Founding Engineer → Product Manager",
       company: "Olis AI",
       location: "Remote",
       period: "Jul 2025 – Present",
       type: "pm",
       highlights: [
-        "Defined product vision and roadmap for an AI knowledge assistant, translating business goals into actionable technical requirements",
-        "Orchestrated MVP launch strategy, prioritizing backlog and managing stakeholder expectations under tight startup constraints",
-        "Oversaw integrations (Slack, Teams, Chrome) and telemetry strategy with focus on scalability and reliability",
-      ],
-    },
-    {
-      title: "Founding Engineer",
-      company: "Olis AI",
-      location: "Bangalore (Remote)",
-      period: "Jul 2025 – Dec 2025",
-      type: "eng",
-      highlights: [
         "Built ambient AI assistant automating 80% of service ticket resolutions using enterprise knowledge",
         "Engineered end-to-end RAG pipeline from document parsing to LLM inference",
+        "Transitioned to Product Manager role, defining product vision and roadmap for the AI knowledge assistant",
+        "Orchestrated MVP launch strategy, prioritizing backlog and managing stakeholder expectations",
         "Delivered 60-70% weekly time savings (4.7 hours/user) through seamless integrations",
       ],
     },
