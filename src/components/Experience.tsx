@@ -1,0 +1,135 @@
+import { Briefcase, MapPin } from "lucide-react";
+
+const Experience = () => {
+  const experiences = [
+    {
+      title: "Founding Product Manager",
+      company: "Olis AI",
+      location: "Remote",
+      period: "Jul 2025 – Present",
+      type: "pm",
+      highlights: [
+        "Defined product vision and roadmap for an AI knowledge assistant, translating business goals into actionable technical requirements",
+        "Orchestrated MVP launch strategy, prioritizing backlog and managing stakeholder expectations under tight startup constraints",
+        "Oversaw integrations (Slack, Teams, Chrome) and telemetry strategy with focus on scalability and reliability",
+      ],
+    },
+    {
+      title: "Founding Engineer",
+      company: "Olis AI",
+      location: "Bangalore (Remote)",
+      period: "Jul 2025 – Dec 2025",
+      type: "eng",
+      highlights: [
+        "Built ambient AI assistant automating 80% of service ticket resolutions using enterprise knowledge",
+        "Engineered end-to-end RAG pipeline from document parsing to LLM inference",
+        "Delivered 60-70% weekly time savings (4.7 hours/user) through seamless integrations",
+      ],
+    },
+    {
+      title: "AI Engineer",
+      company: "Community Dreams Foundation",
+      location: "Boston, MA",
+      period: "May 2025 – Jun 2025",
+      type: "eng",
+      highlights: [
+        "Owned complete technical architecture of voice-based FAQ assistant serving 1,000+ users",
+        "Managed sprint planning, stakeholder syncs, and deliverables as Engineering Project Manager",
+        "Facilitated design discussions and maintained project documentation for cross-team collaboration",
+      ],
+    },
+    {
+      title: "Data Science Intern",
+      company: "Syren Cloud Inc",
+      location: "Remote",
+      period: "Jun 2024 – Aug 2024",
+      type: "eng",
+      highlights: [
+        "Boosted multi-horizon forecast accuracy to 68-72% (from 50%) for 300+ SKUs using ARIMA, Prophet, XGBoost",
+        "Automated training pipelines with Airflow and Scikit-learn, reducing manual iteration",
+        "Collaborated cross-functionally to align predictions with planning KPIs",
+      ],
+    },
+    {
+      title: "Software Developer Intern",
+      company: "Optum Global Solutions",
+      location: "Bangalore, India",
+      period: "Jun 2022 – Aug 2022",
+      type: "eng",
+      highlights: [
+        "Built HIPAA-compliant teleconsultation application improving access for 500+ weekly users",
+        "Integrated Google Calendar and Maps API for real-time scheduling",
+        "Containerized and deployed on Azure Kubernetes Service for scalability",
+      ],
+    },
+  ];
+
+  return (
+    <section id="experience" className="py-24 relative bg-card/50">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16">
+          <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">
+            Experience
+          </p>
+          <h2 className="font-display text-4xl md:text-5xl font-semibold">
+            Professional <span className="text-gradient">Journey</span>
+          </h2>
+        </div>
+
+        <div className="max-w-4xl mx-auto">
+          <div className="relative">
+            {/* Timeline line */}
+            <div className="absolute left-8 top-0 bottom-0 w-px bg-border hidden md:block" />
+
+            <div className="space-y-8">
+              {experiences.map((exp, index) => (
+                <div key={index} className="relative pl-0 md:pl-20">
+                  {/* Timeline dot */}
+                  <div className="absolute left-6 top-8 w-4 h-4 rounded-full bg-primary hidden md:block" />
+                  
+                  <div className="p-6 md:p-8 rounded-2xl card-gradient border border-border hover:border-primary/30 transition-all duration-300 group">
+                    <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
+                      <div>
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className={`px-2.5 py-0.5 text-xs font-medium rounded-full ${
+                            exp.type === "pm" 
+                              ? "bg-primary/10 text-primary" 
+                              : "bg-secondary text-secondary-foreground"
+                          }`}>
+                            {exp.type === "pm" ? "Product" : "Engineering"}
+                          </span>
+                        </div>
+                        <h3 className="font-display text-xl font-semibold group-hover:text-primary transition-colors">
+                          {exp.title}
+                        </h3>
+                        <p className="text-foreground font-medium">{exp.company}</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-primary font-medium text-sm">{exp.period}</p>
+                        <p className="text-muted-foreground text-sm flex items-center gap-1 justify-end">
+                          <MapPin className="w-3 h-3" />
+                          {exp.location}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <ul className="space-y-2">
+                      {exp.highlights.map((highlight, hIndex) => (
+                        <li key={hIndex} className="text-muted-foreground text-sm flex items-start gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                          {highlight}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Experience;

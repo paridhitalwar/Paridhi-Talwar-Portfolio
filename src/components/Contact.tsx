@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { Mail, MapPin, Send } from "lucide-react";
+import { Mail, MapPin, Send, Linkedin, Github } from "lucide-react";
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-32 relative bg-card/50">
+    <section id="contact" className="py-24 relative">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
@@ -14,74 +14,85 @@ const Contact = () => {
               Let's work <span className="text-gradient">together</span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Have a project in mind? I'd love to hear about it. Send me a message
-              and let's create something amazing together.
+              I'm actively looking for Product Management opportunities. 
+              Let's discuss how I can bring value to your team.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12">
             {/* Contact info */}
-            <div className="space-y-8">
-              <div className="flex items-start gap-4">
+            <div className="space-y-6">
+              <div className="flex items-start gap-4 p-4 rounded-xl bg-card border border-border">
                 <div className="p-3 rounded-xl bg-primary/10 text-primary">
-                  <Mail className="w-6 h-6" />
+                  <Mail className="w-5 h-5" />
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">Email</h4>
-                  <p className="text-muted-foreground">hello@portfolio.com</p>
+                  <a href="mailto:paridhitalwar2@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                    paridhitalwar2@gmail.com
+                  </a>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
+              <div className="flex items-start gap-4 p-4 rounded-xl bg-card border border-border">
                 <div className="p-3 rounded-xl bg-primary/10 text-primary">
-                  <MapPin className="w-6 h-6" />
+                  <MapPin className="w-5 h-5" />
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">Location</h4>
-                  <p className="text-muted-foreground">San Francisco, CA</p>
+                  <p className="text-muted-foreground">India (Open to Relocation)</p>
                 </div>
               </div>
 
-              <div className="pt-8 border-t border-border">
-                <p className="text-muted-foreground mb-4">Follow me on</p>
-                <div className="flex gap-4">
-                  {["GitHub", "LinkedIn", "Twitter"].map((social) => (
-                    <a
-                      key={social}
-                      href="#"
-                      className="px-4 py-2 rounded-lg bg-secondary text-secondary-foreground text-sm font-medium hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
-                    >
-                      {social}
-                    </a>
-                  ))}
+              <div className="pt-4">
+                <p className="text-muted-foreground mb-4 text-sm">Connect with me</p>
+                <div className="flex gap-3">
+                  <a
+                    href="https://linkedin.com/in/paridhi-talwar/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-secondary text-secondary-foreground text-sm font-medium hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
+                  >
+                    <Linkedin className="w-4 h-4" />
+                    LinkedIn
+                  </a>
+                  <a
+                    href="https://github.com/paridhitalwar"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-secondary text-secondary-foreground text-sm font-medium hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
+                  >
+                    <Github className="w-4 h-4" />
+                    GitHub
+                  </a>
                 </div>
               </div>
             </div>
 
             {/* Contact form */}
-            <form className="space-y-6">
+            <form className="space-y-5">
               <div>
                 <input
                   type="text"
                   placeholder="Your Name"
-                  className="w-full px-5 py-4 rounded-xl bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
+                  className="w-full px-5 py-4 rounded-xl bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
                 />
               </div>
               <div>
                 <input
                   type="email"
                   placeholder="Your Email"
-                  className="w-full px-5 py-4 rounded-xl bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
+                  className="w-full px-5 py-4 rounded-xl bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
                 />
               </div>
               <div>
                 <textarea
                   rows={4}
                   placeholder="Your Message"
-                  className="w-full px-5 py-4 rounded-xl bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors resize-none"
+                  className="w-full px-5 py-4 rounded-xl bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all resize-none"
                 />
               </div>
-              <Button variant="hero" size="lg" className="w-full gap-2">
+              <Button variant="hero" size="lg" className="w-full gap-2 rounded-full">
                 <Send className="w-5 h-5" />
                 Send Message
               </Button>

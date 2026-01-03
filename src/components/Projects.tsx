@@ -4,98 +4,85 @@ import { Button } from "@/components/ui/button";
 const Projects = () => {
   const projects = [
     {
-      title: "E-Commerce Platform",
-      description: "A modern e-commerce solution with seamless checkout experience and real-time inventory management.",
-      tags: ["React", "Node.js", "PostgreSQL"],
-      image: "🛒",
-      featured: true,
+      title: "Smart Fridge App",
+      description: "AI-powered meal management app reducing food waste by 10% through inventory tracking, calendar-based meal planning, and LLM-powered recipe suggestions using Gemini.",
+      tags: ["Python", "React", "Flask", "MongoDB", "GenAI"],
+      impact: "10% reduction in food waste",
+      hasGithub: true,
     },
     {
-      title: "Task Management App",
-      description: "Collaborative project management tool with real-time updates and intuitive interface.",
-      tags: ["Next.js", "TypeScript", "Prisma"],
-      image: "📋",
-      featured: false,
+      title: "Bitcoin Trading Analysis",
+      description: "Published research at ITISE 2025 on time-series forecasting for cryptocurrency trading patterns, exploring sleep vs. trade optimization strategies.",
+      tags: ["Time-Series", "Python", "Research"],
+      impact: "Published at ITISE 2025, Spain",
+      hasGithub: false,
     },
     {
-      title: "AI Dashboard",
-      description: "Analytics dashboard with machine learning insights and beautiful data visualizations.",
-      tags: ["Python", "React", "TensorFlow"],
-      image: "📊",
-      featured: false,
+      title: "Brewing Data Analytics",
+      description: "End-to-end data pipeline analyzing brewing parameters and sales trends using PySpark on GCP, with ML models predicting quality outcomes and real-time stakeholder dashboards.",
+      tags: ["PySpark", "GCP", "ML", "Dashboards"],
+      impact: "Real-time operational insights",
+      hasGithub: false,
     },
     {
-      title: "Social Media App",
-      description: "Feature-rich social platform with real-time messaging and content sharing.",
-      tags: ["React Native", "Firebase", "Redux"],
-      image: "💬",
-      featured: true,
+      title: "Animal Intrusion Detection",
+      description: "Real-time computer vision system using Mask RCNN and OpenCV achieving 87% detection accuracy, with automated alerts reducing human intervention by 30%.",
+      tags: ["Computer Vision", "OpenCV", "Mask RCNN"],
+      impact: "87% accuracy, 30% faster response",
+      hasGithub: false,
     },
   ];
 
   return (
-    <section id="projects" className="py-32 relative bg-card/50">
+    <section id="projects" className="py-24 relative">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">
-            My Work
+            Portfolio
           </p>
           <h2 className="font-display text-4xl md:text-5xl font-semibold">
             Featured <span className="text-gradient">Projects</span>
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {projects.map((project, index) => (
             <div
               key={index}
-              className={`group relative rounded-2xl overflow-hidden card-gradient border border-border hover:border-primary/50 transition-all duration-500 ${
-                project.featured ? "md:col-span-1" : ""
-              }`}
+              className="p-8 rounded-2xl card-gradient border border-border hover:border-primary/30 transition-all duration-300 group"
             >
-              {/* Project image/icon area */}
-              <div className="aspect-video bg-gradient-to-br from-primary/10 to-transparent flex items-center justify-center text-6xl group-hover:scale-105 transition-transform duration-500">
-                {project.image}
+              <h3 className="font-display text-2xl font-semibold mb-3 group-hover:text-primary transition-colors">
+                {project.title}
+              </h3>
+              
+              <p className="text-muted-foreground mb-4 leading-relaxed">
+                {project.description}
+              </p>
+
+              {/* Impact badge */}
+              <div className="inline-block px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+                {project.impact}
               </div>
 
-              {/* Content */}
-              <div className="p-8">
-                <h3 className="font-display text-2xl font-semibold mb-3 group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  {project.description}
-                </p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tags.map((tag, tagIndex) => (
-                    <span
-                      key={tagIndex}
-                      className="px-3 py-1 text-xs font-medium bg-secondary text-secondary-foreground rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Actions */}
-                <div className="flex items-center gap-4">
-                  <Button variant="ghost" size="sm" className="gap-2">
-                    <Github className="w-4 h-4" />
-                    Code
-                  </Button>
-                  <Button variant="ghost" size="sm" className="gap-2">
-                    <ExternalLink className="w-4 h-4" />
-                    Live Demo
-                  </Button>
-                </div>
+              {/* Tags */}
+              <div className="flex flex-wrap gap-2 mb-6">
+                {project.tags.map((tag, tagIndex) => (
+                  <span
+                    key={tagIndex}
+                    className="px-3 py-1 text-xs font-medium bg-secondary text-secondary-foreground rounded-full"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
 
-              {/* Hover glow effect */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent" />
-              </div>
+              {/* Actions */}
+              {project.hasGithub && (
+                <Button variant="ghost" size="sm" className="gap-2">
+                  <Github className="w-4 h-4" />
+                  View Code
+                </Button>
+              )}
             </div>
           ))}
         </div>
