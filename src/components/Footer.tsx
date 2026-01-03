@@ -1,27 +1,19 @@
 const Footer = () => {
   return (
-    <footer className="py-12 border-t border-border">
+    <footer className="py-10 border-t border-border bg-card/30">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <a href="#" className="font-display text-xl font-semibold text-gradient">
-            Portfolio
-          </a>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="font-display text-lg font-medium text-gradient">
+            Paridhi Talwar
+          </p>
           
           <p className="text-muted-foreground text-sm">
             © {new Date().getFullYear()} All rights reserved.
           </p>
 
-          <div className="flex items-center gap-6">
-            {["Privacy", "Terms"].map((link) => (
-              <a
-                key={link}
-                href="#"
-                className="text-muted-foreground hover:text-foreground text-sm transition-colors"
-              >
-                {link}
-              </a>
-            ))}
-          </div>
+          <p className="text-muted-foreground text-sm">
+            Built with passion
+          </p>
         </div>
       </div>
     </footer>

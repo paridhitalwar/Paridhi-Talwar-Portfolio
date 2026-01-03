@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
@@ -11,10 +12,10 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Portfolio | Creative Developer & Designer</title>
+        <title>Paridhi Talwar | Product Manager & AI Engineer</title>
         <meta
           name="description"
-          content="A passionate developer and designer focused on creating beautiful, functional, and user-centered digital experiences. View my work and get in touch."
+          content="Product Manager and AI Engineer with expertise in building AI-powered products. MS in Computer Science from Boston University. Open to Product Management opportunities."
         />
       </Helmet>
       
@@ -23,6 +24,7 @@ const Index = () => {
         <main>
           <Hero />
           <About />
+          <Experience />
           <Projects />
           <Skills />
           <Contact />
