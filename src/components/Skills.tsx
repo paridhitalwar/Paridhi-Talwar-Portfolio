@@ -1,26 +1,29 @@
 const Skills = () => {
   const skillCategories = [
     {
-      title: "Product Management",
-      skills: ["Agile & Scrum", "Sprint Planning", "Stakeholder Management", "Roadmap Strategy", "Risk Management"],
+      title: "Programming Languages",
+      skills: ["C++", "Python", "MATLAB", "Java", "R", "SQL", "LaTeX"],
     },
     {
-      title: "Technical",
-      skills: ["Python", "SQL", "React", "TensorFlow", "AWS/GCP/Azure"],
+      title: "Libraries & Tools",
+      skills: ["GitHub", "JIRA", "MongoDB", "NumPy", "Pandas", "Scikit-learn", "NLTK", "Keras", "Streamlit", "Cypress"],
     },
     {
-      title: "Data & AI",
-      skills: ["Machine Learning", "RAG Pipelines", "Time-Series Analysis", "Computer Vision", "MLOps"],
+      title: "Technologies & Frameworks",
+      skills: ["TensorFlow", "Google Cloud", "AWS", "Azure", "PySpark", "PyTorch", "Databricks", "FastAPI"],
     },
     {
-      title: "Tools",
-      skills: ["JIRA", "Confluence", "Figma", "GitHub", "Docker"],
+      title: "DevOps & Deployment",
+      skills: ["GitHub Actions", "Docker", "CI/CD", "Airflow", "Azure Kubernetes Service", "Unit Testing (PyTest)"],
+    },
+    {
+      title: "Data Science & Analytics",
+      skills: ["Machine Learning", "MLOps", "MLFlow", "Generative AI", "Computer Vision", "Statistical Modeling", "Time-Series Analysis"],
     },
   ];
 
   const additionalSkills = [
-    "FastAPI", "MongoDB", "PostgreSQL", "Airflow", "PyTorch", 
-    "Scikit-learn", "Pandas", "Databricks", "Kubernetes", "CI/CD"
+    "Agile & Scrum", "Sprint Planning", "Stakeholder Management", "Roadmap Strategy", "RAG Pipelines", "PostgreSQL"
   ];
 
   return (
@@ -35,7 +38,7 @@ const Skills = () => {
           </h2>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12">
           {skillCategories.map((category, index) => (
             <div
               key={index}
