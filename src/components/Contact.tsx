@@ -24,18 +24,6 @@ const Contact = () => {
             <div className="space-y-6">
               <div className="flex items-start gap-4 p-4 rounded-xl bg-card border border-border">
                 <div className="p-3 rounded-xl bg-primary/10 text-primary">
-                  <Mail className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-1">Email</h4>
-                  <a href="mailto:paridhitalwar2@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
-                    paridhitalwar2@gmail.com
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4 p-4 rounded-xl bg-card border border-border">
-                <div className="p-3 rounded-xl bg-primary/10 text-primary">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
@@ -47,6 +35,13 @@ const Contact = () => {
               <div className="pt-4">
                 <p className="text-muted-foreground mb-4 text-sm">Connect with me</p>
                 <div className="flex gap-3">
+                  <a
+                    href="mailto:paridhitalwar2@gmail.com"
+                    className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-secondary text-secondary-foreground text-sm font-medium hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
+                  >
+                    <Mail className="w-4 h-4" />
+                    Email
+                  </a>
                   <a
                     href="https://linkedin.com/in/paridhi-talwar/"
                     target="_blank"
