@@ -1,4 +1,5 @@
 import { GraduationCap, Award, BookOpen } from "lucide-react";
+import headshot from "@/assets/headshot.png";
 
 const About = () => {
   const education = [
@@ -33,20 +34,30 @@ const About = () => {
             Building products at the{" "}
             <span className="text-gradient">intersection</span> of AI & business
           </h2>
-          
-          <div className="space-y-6 text-muted-foreground leading-relaxed text-center max-w-3xl mx-auto mb-16">
-            <p>
-              I'm a Product Manager and AI Engineer with a unique blend of deep technical expertise 
-              and strategic product thinking. With experience at early-stage startups as a Founding 
-              Product Manager and Engineer, I thrive in ambiguity and love turning complex problems 
-              into elegant solutions.
-            </p>
-            <p>
-              My journey spans from building RAG pipelines and AI assistants to defining product 
-              roadmaps and leading cross-functional teams. I'm passionate about creating AI-powered 
-              products that deliver measurable impact—whether that's saving users 5+ hours weekly 
-              or achieving 70%+ forecast accuracy.
-            </p>
+
+          {/* Photo and Bio */}
+          <div className="flex flex-col md:flex-row items-center gap-8 mb-16">
+            <div className="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg flex-shrink-0">
+              <img 
+                src={headshot} 
+                alt="Paridhi headshot" 
+                className="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div className="space-y-6 text-muted-foreground leading-relaxed text-center md:text-left">
+              <p>
+                I'm a Product Manager and AI Engineer with a unique blend of deep technical expertise 
+                and strategic product thinking. With experience at early-stage startups as a Founding 
+                Product Manager and Engineer, I thrive in ambiguity and love turning complex problems 
+                into elegant solutions.
+              </p>
+              <p>
+                My journey spans from building RAG pipelines and AI assistants to defining product 
+                roadmaps and leading cross-functional teams. I'm passionate about creating AI-powered 
+                products that deliver measurable impact—whether that's saving users 5+ hours weekly 
+                or achieving 70%+ forecast accuracy.
+              </p>
+            </div>
           </div>
 
           {/* Education */}
