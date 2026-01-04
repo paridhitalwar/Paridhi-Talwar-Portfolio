@@ -3,7 +3,7 @@ import { GraduationCap, Award, BookOpen } from "lucide-react";
 const About = () => {
   const education = [
     {
-      degree: "MBA - Data Science",
+      degree: "MBA - Data Science (Online)",
       school: "Amity University, India",
       year: "2025 - 2027",
       icon: BookOpen,
