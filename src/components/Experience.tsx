@@ -3,7 +3,7 @@ import { Briefcase, MapPin } from "lucide-react";
 const Experience = () => {
   const experiences = [
     {
-      title: "Founding Engineer → Product Manager",
+      title: "Founding Product Manager",
       company: "Olis AI",
       location: "Remote",
       period: "Jul 2025 – Present",
