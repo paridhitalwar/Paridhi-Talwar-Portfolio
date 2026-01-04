@@ -6,7 +6,7 @@ const Experience = () => {
       title: "Founding Product Manager",
       company: "Olis AI",
       location: "Remote",
-      period: "Jul 2025 – Present",
+      period: "Jul 2025 – Dec 2025",
       type: "pm",
       highlights: [
         "Built ambient AI assistant automating 80% of service ticket resolutions using enterprise knowledge",
