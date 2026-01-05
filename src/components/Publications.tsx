@@ -6,7 +6,7 @@ const publications = [
     conference: "ITISE Conf'25, MDPI",
     date: "Aug 22, 2025",
     doi: "https://doi.org/10.3390/cmsf2025011020",
-    description: "Conducted a comprehensive time-series analysis of Bitcoin price behavior to evaluate the efficacy of \"overnight\" trading versus traditional buy-and-hold strategies. By leveraging neural networks to analyze 14-day and 50-day windows, the study provides actionable insights into market sentiment and risk management, demonstrating how sequential modeling can capitalize on global market shifts outside of standard trading hours.",
+    description: "An exploration of how deep learning models predict Bitcoin price moves across different trading windows and why the overnight market may hold the most surprising edge.",
   },
   {
     title: "Animal Intrusion Detection System",
