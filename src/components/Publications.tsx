@@ -6,6 +6,7 @@ const publications = [
     conference: "ITISE Conf'25, MDPI",
     date: "Aug 22, 2025",
     doi: "https://doi.org/10.3390/cmsf2025011020",
+    description: "Conducted a comprehensive time-series analysis of Bitcoin price behavior to evaluate the efficacy of \"overnight\" trading versus traditional buy-and-hold strategies. By leveraging neural networks to analyze 14-day and 50-day windows, the study provides actionable insights into market sentiment and risk management, demonstrating how sequential modeling can capitalize on global market shifts outside of standard trading hours.",
   },
   {
     title: "Animal Intrusion Detection System",
@@ -48,6 +49,11 @@ const Publications = () => {
                   <p className="text-muted-foreground mt-1">
                     {pub.conference} · {pub.date}
                   </p>
+                  {"description" in pub && pub.description && (
+                    <p className="text-sm text-muted-foreground mt-2 line-clamp-3">
+                      {pub.description}
+                    </p>
+                  )}
                 </div>
                 <ExternalLink className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
               </div>
