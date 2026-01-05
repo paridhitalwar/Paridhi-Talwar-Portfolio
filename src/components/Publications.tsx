@@ -13,6 +13,7 @@ const publications = [
     conference: "ICIOT Conf'23, AIP",
     date: "Jul 29, 2024",
     doi: "https://doi.org/10.1063/5.0217578",
+    description: "Led the development of a computer vision project aimed at reducing animal-human accidents in rural India. Published in AIP Conference Proceedings, this research utilizes instance segmentation to recognize intrusions in real-time.",
   },
 ];
 
