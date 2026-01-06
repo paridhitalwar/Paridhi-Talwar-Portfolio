@@ -21,6 +21,18 @@ export default function ChatBot() {
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  // Auto-open chatbot after 2 seconds for new visitors
+  useEffect(() => {
+    const hasSeenChat = sessionStorage.getItem("chatbot-opened");
+    if (!hasSeenChat) {
+      const timer = setTimeout(() => {
+        setIsOpen(true);
+        sessionStorage.setItem("chatbot-opened", "true");
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
