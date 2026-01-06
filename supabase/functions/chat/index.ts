@@ -50,12 +50,50 @@ serve(async (req) => {
     const body = await req.json();
     const { messages } = body;
     
-    // Validate input
+    // Validate input structure
     if (!messages || !Array.isArray(messages) || messages.length === 0) {
       return new Response(JSON.stringify({ error: "Invalid request: messages required" }), {
         status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
+    }
+    
+    // Validate each message
+    const MAX_MESSAGE_LENGTH = 2000;
+    const VALID_ROLES = ['user', 'assistant'];
+    
+    for (const msg of messages) {
+      // Check required fields exist
+      if (!msg || typeof msg !== 'object') {
+        return new Response(JSON.stringify({ error: "Invalid message format" }), {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      
+      // Validate role
+      if (!msg.role || !VALID_ROLES.includes(msg.role)) {
+        return new Response(JSON.stringify({ error: "Invalid message role" }), {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      
+      // Validate content
+      if (!msg.content || typeof msg.content !== 'string') {
+        return new Response(JSON.stringify({ error: "Invalid message content" }), {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      
+      // Check content length
+      if (msg.content.length > MAX_MESSAGE_LENGTH) {
+        return new Response(JSON.stringify({ error: `Message too long (max ${MAX_MESSAGE_LENGTH} characters)` }), {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
     }
     
     // Limit message history to prevent token abuse
