@@ -4,6 +4,7 @@ import Experience from "@/components/Experience";
 import Publications from "@/components/Publications";
 import Footer from "@/components/Footer";
 import ChatBot from "@/components/ChatBot";
+import CursorFollower from "@/components/CursorFollower";
 
 const ExperiencePage = () => {
   return (
@@ -24,6 +25,7 @@ const ExperiencePage = () => {
         </main>
         <Footer />
         <ChatBot />
+        <CursorFollower />
       </div>
     </>
   );

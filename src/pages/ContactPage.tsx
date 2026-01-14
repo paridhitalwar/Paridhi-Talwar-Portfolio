@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ChatBot from "@/components/ChatBot";
+import CursorFollower from "@/components/CursorFollower";
 
 const ContactPage = () => {
   return (
@@ -22,6 +23,7 @@ const ContactPage = () => {
         </main>
         <Footer />
         <ChatBot />
+        <CursorFollower />
       </div>
     </>
   );
