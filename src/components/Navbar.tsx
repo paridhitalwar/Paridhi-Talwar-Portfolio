@@ -16,13 +16,20 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/experience", label: "Experience" },
-    { href: "/projects", label: "Projects" },
-    { href: "/contact", label: "Contact" },
+    { href: "/", label: "Home", isAnchor: false },
+    { href: "/#about", label: "About", isAnchor: true },
+    { href: "/#skills", label: "Skills", isAnchor: true },
+    { href: "/experience", label: "Experience", isAnchor: false },
+    { href: "/projects", label: "Projects", isAnchor: false },
+    { href: "/contact", label: "Contact", isAnchor: false },
   ];
 
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string, isAnchor: boolean) => {
+    if (isAnchor) {
+      return location.pathname === "/" && location.hash === path.replace("/", "");
+    }
+    return location.pathname === path;
+  };
 
   return (
     <nav
@@ -48,7 +55,7 @@ const Navbar = () => {
                 key={link.href}
                 to={link.href}
                 className={`transition-colors duration-300 text-sm font-medium ${
-                  isActive(link.href)
+                  isActive(link.href, link.isAnchor)
                     ? "text-primary"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
@@ -83,7 +90,7 @@ const Navbar = () => {
                 to={link.href}
                 onClick={() => setMobileOpen(false)}
                 className={`block py-3 transition-colors ${
-                  isActive(link.href)
+                  isActive(link.href, link.isAnchor)
                     ? "text-primary"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
