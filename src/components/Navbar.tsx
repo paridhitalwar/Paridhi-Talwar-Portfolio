@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,13 +16,13 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { href: "#about", label: "About" },
-    { href: "#experience", label: "Experience" },
-    { href: "#projects", label: "Projects" },
-    { href: "#publications", label: "Publications" },
-    { href: "#skills", label: "Skills" },
-    { href: "#contact", label: "Contact" },
+    { href: "/", label: "Home" },
+    { href: "/experience", label: "Experience" },
+    { href: "/projects", label: "Projects" },
+    { href: "/contact", label: "Contact" },
   ];
+
+  const isActive = (path: string) => location.pathname === path;
 
   return (
     <nav
@@ -32,32 +34,36 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <a
-            href="#"
+          <Link
+            to="/"
             className="font-display text-2xl font-semibold text-gradient"
           >
             Paridhi Talwar
-          </a>
+          </Link>
           
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
-                href={link.href}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm font-medium"
+                to={link.href}
+                className={`transition-colors duration-300 text-sm font-medium ${
+                  isActive(link.href)
+                    ? "text-primary"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
           
-          <a
-            href="#contact"
+          <Link
+            to="/contact"
             className="hidden md:inline-flex bg-primary text-primary-foreground px-5 py-2.5 rounded-full text-sm font-medium hover:scale-105 transition-transform duration-300 shadow-soft"
           >
             Get In Touch
-          </a>
+          </Link>
 
           {/* Mobile menu button */}
           <button
@@ -72,14 +78,18 @@ const Navbar = () => {
         {mobileOpen && (
           <div className="md:hidden pt-4 pb-2">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
-                href={link.href}
+                to={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="block py-3 text-muted-foreground hover:text-foreground transition-colors"
+                className={`block py-3 transition-colors ${
+                  isActive(link.href)
+                    ? "text-primary"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
         )}
