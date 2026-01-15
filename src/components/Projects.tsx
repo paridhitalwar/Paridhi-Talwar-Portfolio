@@ -1,4 +1,4 @@
-import { Github, Code, Database, Users } from "lucide-react";
+import { Github, Code, Database, Users, FileDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -58,6 +58,7 @@ const Projects = () => {
       tags: ["Market Research", "Competitive Analysis", "Strategy"],
       impact: "Strategic product insights",
       hasGithub: false,
+      pdfLink: "/documents/chatgpt-market-research.pdf",
     },
     {
       title: "ChatGPT User Research & Segmentation",
@@ -65,10 +66,11 @@ const Projects = () => {
       tags: ["User Research", "Segmentation", "Personas"],
       impact: "Data-driven user insights",
       hasGithub: false,
+      pdfLink: "/documents/chatgpt-user-research.pdf",
     },
   ];
 
-  const ProjectCard = ({ project }: { project: typeof softwareProjects[0] }) => (
+  const ProjectCard = ({ project }: { project: typeof softwareProjects[0] & { pdfLink?: string } }) => (
     <div className="p-8 rounded-2xl card-gradient border border-border hover:border-primary/30 transition-all duration-300 group">
       <h3 className="font-display text-2xl font-semibold mb-3 group-hover:text-primary transition-colors">
         {project.title}
@@ -93,12 +95,22 @@ const Projects = () => {
         ))}
       </div>
 
-      {project.hasGithub && (
-        <Button variant="ghost" size="sm" className="gap-2">
-          <Github className="w-4 h-4" />
-          View Code
-        </Button>
-      )}
+      <div className="flex gap-2">
+        {project.hasGithub && (
+          <Button variant="ghost" size="sm" className="gap-2">
+            <Github className="w-4 h-4" />
+            View Code
+          </Button>
+        )}
+        {project.pdfLink && (
+          <Button variant="ghost" size="sm" className="gap-2" asChild>
+            <a href={project.pdfLink} target="_blank" rel="noopener noreferrer">
+              <FileDown className="w-4 h-4" />
+              View Case Study
+            </a>
+          </Button>
+        )}
+      </div>
     </div>
   );
 
