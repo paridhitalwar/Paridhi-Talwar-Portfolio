@@ -82,7 +82,7 @@ const Navbar = () => {
                 className={`transition-colors duration-300 text-sm font-medium ${
                   isActive(link.href, link.isAnchor)
                     ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground"
+                    : "text-primary/70 hover:text-primary"
                 }`}
               >
                 {link.label}
@@ -120,7 +120,7 @@ const Navbar = () => {
                 className={`block py-3 transition-colors ${
                   isActive(link.href, link.isAnchor)
                     ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground"
+                    : "text-primary/70 hover:text-primary"
                 }`}
               >
                 {link.label}
