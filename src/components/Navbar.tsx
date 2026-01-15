@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,6 +32,30 @@ const Navbar = () => {
     return location.pathname === path;
   };
 
+  const handleNavClick = (e: React.MouseEvent, href: string, isAnchor: boolean) => {
+    if (isAnchor) {
+      e.preventDefault();
+      const sectionId = href.replace("/#", "");
+      
+      if (location.pathname === "/") {
+        // Already on home page, just scroll
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      } else {
+        // Navigate to home then scroll
+        navigate("/");
+        setTimeout(() => {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+          }
+        }, 100);
+      }
+    }
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -48,12 +73,12 @@ const Navbar = () => {
             Paridhi Talwar
           </Link>
           
-          {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 to={link.href}
+                onClick={(e) => handleNavClick(e, link.href, link.isAnchor)}
                 className={`transition-colors duration-300 text-sm font-medium ${
                   isActive(link.href, link.isAnchor)
                     ? "text-primary"
@@ -88,7 +113,10 @@ const Navbar = () => {
               <Link
                 key={link.href}
                 to={link.href}
-                onClick={() => setMobileOpen(false)}
+                onClick={(e) => {
+                  handleNavClick(e, link.href, link.isAnchor);
+                  setMobileOpen(false);
+                }}
                 className={`block py-3 transition-colors ${
                   isActive(link.href, link.isAnchor)
                     ? "text-primary"
