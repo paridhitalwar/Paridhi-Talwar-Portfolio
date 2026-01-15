@@ -79,10 +79,10 @@ const Navbar = () => {
                 key={link.href}
                 to={link.href}
                 onClick={(e) => handleNavClick(e, link.href, link.isAnchor)}
-                className={`transition-colors duration-300 text-sm font-medium ${
+                className={`transition-all duration-300 text-sm text-primary hover:opacity-80 ${
                   isActive(link.href, link.isAnchor)
-                    ? "text-primary"
-                    : "text-primary/70 hover:text-primary"
+                    ? "font-semibold"
+                    : "font-medium"
                 }`}
               >
                 {link.label}
@@ -117,10 +117,10 @@ const Navbar = () => {
                   handleNavClick(e, link.href, link.isAnchor);
                   setMobileOpen(false);
                 }}
-                className={`block py-3 transition-colors ${
+                className={`block py-3 transition-all text-primary hover:opacity-80 ${
                   isActive(link.href, link.isAnchor)
-                    ? "text-primary"
-                    : "text-primary/70 hover:text-primary"
+                    ? "font-semibold"
+                    : "font-medium"
                 }`}
               >
                 {link.label}
