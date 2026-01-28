@@ -69,7 +69,7 @@ const Experience = () => {
       type: "eng",
       highlights: [
         "Engineered and deployed a full-stack, HIPAA-compliant teleconsultation platform using Flask and MongoDB, facilitating secure virtual care for over 500 weekly users.",
-        "Architected a real-time, peer-to-peer video conferencing module for doctors and patients—comparable to Google Meet and Zoom—ensuring encrypted, low-latency communication for remote clinical consultations.",
+        "Architected a real-time, peer-to-peer video conferencing module for doctors and patients, comparable to Google Meet and Zoom, ensuring encrypted, low-latency communication for remote clinical consultations.",
         "Developed a seamless scheduling engine by integrating Google Calendar API and utilized Google Maps API for automated clinic discovery, significantly reducing average patient wait times and administrative overhead.",
         "Containerized the entire microservices architecture using Docker and orchestrated the deployment on Azure Kubernetes Service (AKS) to ensure 99.9% uptime and high availability.",
         "Implemented secure RESTful APIs to handle sensitive patient data, adhering to strict healthcare regulatory standards and data privacy protocols.",
