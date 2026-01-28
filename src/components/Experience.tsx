@@ -4,7 +4,7 @@ const Experience = () => {
   const experiences = [
     {
       title: "Founding Product Manager",
-      company: "Olis AI",
+      company: "Olis AI (Early-Stage Startup)",
       location: "Remote",
       period: "Jul 2025 – Dec 2025",
       type: "pm",
