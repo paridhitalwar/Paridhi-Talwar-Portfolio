@@ -53,9 +53,12 @@ const Experience = () => {
       period: "Jun 2024 – Aug 2024",
       type: "eng",
       highlights: [
-        "Boosted multi-horizon forecast accuracy to 68-72% (from 50%) for 300+ SKUs using ARIMA, Prophet, XGBoost",
-        "Automated training pipelines with Airflow and Scikit-learn, reducing manual iteration",
-        "Collaborated cross-functionally to align predictions with planning KPIs",
+        "Engineered and automated end-to-end machine learning training and inference pipelines using Apache Airflow and Scikit-learn, reducing manual iteration cycles and streamlining experimental workflows.",
+        "Boosted multi-horizon forecast accuracy from a baseline of 50% to 68–72% for over 300+ SKUs by implementing and fine-tuning an ensemble of ARIMA, Prophet, and XGBoost models.",
+        "Developed robust feature engineering pipelines using lag variables, rolling windows, and seasonality trends to capture complex temporal patterns within proprietary company datasets.",
+        "Evaluated model performance using rigorous statistical metrics, including RMSE, MAE, and bias metrics, ensuring forecasting reliability across diverse product categories.",
+        "Collaborated cross-functionally with analytics and operations teams to align model predictions with high-level planning KPIs, successfully reducing supply-demand gaps.",
+        "Optimized downstream reporting by integrating automated forecasting outputs into the company's data infrastructure, enhancing the accuracy of inventory management and resource allocation.",
       ],
     },
     {
