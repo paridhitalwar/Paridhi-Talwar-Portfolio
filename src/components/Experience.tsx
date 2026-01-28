@@ -34,6 +34,19 @@ const Experience = () => {
       ],
     },
     {
+      title: "Research Assistant",
+      company: "Boston University",
+      location: "Boston, MA",
+      period: "Aug 2024 – Jan 2025",
+      type: "eng",
+      highlights: [
+        "Conducted deep learning research on cryptocurrency volatility, applying advanced neural networks to develop and compare trading strategies.",
+        "Investigated Bitcoin price behavior by developing and benchmarking advanced neural network models, including Long Short-Term Memory (LSTM), Convolutional Neural Networks (CNN), and Recurrent CNN (RCNN).",
+        "Analyzed model performance across different time intervals (close-to-close, open-to-close) to evaluate the predictive power of a volatility-based trading strategy versus a traditional buy-and-hold approach.",
+        "Co-authored the resulting research paper, \"Should You Sleep or Trade Bitcoin?\", which was accepted for publication at the 11th International Conference on Time Series and Forecasting (ITISE 2025) in Spain.",
+      ],
+    },
+    {
       title: "Data Science Intern",
       company: "Syren Cloud Inc",
       location: "Remote",
