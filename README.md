@@ -1,73 +1,65 @@
-# Welcome to your Lovable project
+# Paridhi Talwar — Product Manager & AI Engineer
 
-## Project info
+🌐 **Live Site:** [paridhi-talwar.lovable.app](https://paridhi-talwar.lovable.app)
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## About
 
-## How can I edit this code?
+Personal portfolio website for **Paridhi Talwar** — a Product Manager and AI Engineer with expertise in building AI-powered products. This site showcases my experience, projects, publications, and skills at the intersection of AI and business.
 
-There are several ways of editing your application.
+## Highlights
 
-**Use Lovable**
+- 🎓 **MS in Computer Science** — Boston University
+- 📚 **MBA in Data Science** (ongoing) — Amity University
+- 🚀 Experience as a Founding Product Manager & Engineer at early-stage startups
+- 🤖 Expertise in RAG pipelines, AI assistants, and product strategy
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## Features
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Interactive AI Chatbot** — Ask questions about my background and experience
+- **Custom Cursor Follower** — Playful UI interaction
+- **Responsive Design** — Optimized for all screen sizes
+- **Dark-Themed Aesthetic** — Clean, modern portfolio design
+- **Multi-Page Layout** — Dedicated pages for Experience, Projects, and Contact
 
-**Use your preferred IDE**
+## Pages
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+| Route | Description |
+|-------|-------------|
+| `/` | Home — Hero, About, and Skills |
+| `/experience` | Work experience timeline |
+| `/projects` | Featured projects and case studies |
+| `/contact` | Get in touch |
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Tech Stack
 
-Follow these steps:
+- **Framework:** React + TypeScript
+- **Build Tool:** Vite
+- **Styling:** Tailwind CSS
+- **UI Components:** shadcn/ui
+- **Routing:** React Router
+- **Backend:** Lovable Cloud (Edge Functions, Database)
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+## Getting Started
+
+```bash
+# Clone the repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
+# Navigate to the project
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Contact
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- 📧 Reach out via the [Contact page](https://paridhi-talwar.lovable.app/contact)
+- 💼 Open to **Product Management opportunities**
 
-**Use GitHub Codespaces**
+---
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Built with [Lovable](https://lovable.dev)
