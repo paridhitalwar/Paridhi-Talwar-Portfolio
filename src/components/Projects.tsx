@@ -61,7 +61,7 @@ const Projects = () => {
 
   const pmProjects = [
     {
-      title: "ChatGPT Whisper Mode – Voice UX Redesign",
+      title: "ChatGPT Live Scratchpad – Voice UX Redesign",
       description: "End-to-end product ideation for enhancing ChatGPT Voice Mode with a private 'Whisper' input and real-time editable transcripts, addressing the control and privacy barriers preventing 70% of young professionals from adopting voice input.",
       tags: ["Product Ideation", "Wireframing", "UX Research", "Voice UI", "Metrics"],
       impact: "Targeting 30% MoM voice adoption lift",
