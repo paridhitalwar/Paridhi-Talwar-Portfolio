@@ -1,4 +1,4 @@
-import { Github, Code, Database, Users, FileDown } from "lucide-react";
+import { Github, Code, Database, Users, FileDown, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -61,6 +61,15 @@ const Projects = () => {
 
   const pmProjects = [
     {
+      title: "ChatGPT Whisper Mode – Voice UX Redesign",
+      description: "End-to-end product ideation for enhancing ChatGPT Voice Mode with a private 'Whisper' input and real-time editable transcripts, addressing the control and privacy barriers preventing 70% of young professionals from adopting voice input.",
+      tags: ["Product Ideation", "Wireframing", "UX Research", "Voice UI", "Metrics"],
+      impact: "Targeting 30% MoM voice adoption lift",
+      hasGithub: false,
+      pdfLink: "/documents/chatgpt-whisper-mode.pdf",
+      prototypeLink: "https://articulate-whisper.lovable.app",
+    },
+    {
       title: "ChatGPT Market Research Case Study",
       description: "Comprehensive market research analysis for ChatGPT, including competitive landscape, market sizing, and strategic recommendations for product positioning.",
       tags: ["Market Research", "Competitive Analysis", "Strategy"],
@@ -78,7 +87,7 @@ const Projects = () => {
     },
   ];
 
-  const ProjectCard = ({ project }: { project: { title: string; description: string; tags: string[]; impact: string; hasGithub: boolean; pdfLink?: string; githubLink?: string } }) => (
+  const ProjectCard = ({ project }: { project: { title: string; description: string; tags: string[]; impact: string; hasGithub: boolean; pdfLink?: string; githubLink?: string; prototypeLink?: string } }) => (
     <div className="p-8 rounded-2xl card-gradient border border-border hover:border-primary/30 transition-all duration-300 group">
       <h3 className="font-display text-2xl font-semibold mb-3 group-hover:text-primary transition-colors">
         {project.title}
@@ -117,6 +126,14 @@ const Projects = () => {
             <a href={project.pdfLink} target="_blank" rel="noopener noreferrer">
               <FileDown className="w-4 h-4" />
               View Case Study
+            </a>
+          </Button>
+        )}
+        {project.prototypeLink && (
+          <Button variant="ghost" size="sm" className="gap-2" asChild>
+            <a href={project.prototypeLink} target="_blank" rel="noopener noreferrer">
+              <ExternalLink className="w-4 h-4" />
+              View Prototype
             </a>
           </Button>
         )}
