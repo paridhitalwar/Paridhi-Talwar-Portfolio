@@ -53,6 +53,14 @@ const Projects = () => {
 
   const pmProjects = [
     {
+      title: "AI Personal Knowledge Base Assistant",
+      description: "Multi-source knowledge base that ingests documents from Notion and Google Drive, uses semantic search with embeddings to find relevant chunks, and leverages Groq LLM for context-aware AI-powered answers through a clean Streamlit interface.",
+      tags: ["Notion API", "Google Drive", "Groq LLM", "Embeddings", "Streamlit"],
+      impact: "Semantic search & AI-powered answers",
+      hasGithub: true,
+      githubLink: "https://github.com/paridhitalwar/AI-Personal-Knowledge-Base-Assistant",
+    },
+    {
       title: "ChatGPT Market Research Case Study",
       description: "Comprehensive market research analysis for ChatGPT, including competitive landscape, market sizing, and strategic recommendations for product positioning.",
       tags: ["Market Research", "Competitive Analysis", "Strategy"],
@@ -70,7 +78,7 @@ const Projects = () => {
     },
   ];
 
-  const ProjectCard = ({ project }: { project: typeof softwareProjects[0] & { pdfLink?: string } }) => (
+  const ProjectCard = ({ project }: { project: typeof softwareProjects[0] & { pdfLink?: string; githubLink?: string } }) => (
     <div className="p-8 rounded-2xl card-gradient border border-border hover:border-primary/30 transition-all duration-300 group">
       <h3 className="font-display text-2xl font-semibold mb-3 group-hover:text-primary transition-colors">
         {project.title}
@@ -97,9 +105,11 @@ const Projects = () => {
 
       <div className="flex gap-2">
         {project.hasGithub && (
-          <Button variant="ghost" size="sm" className="gap-2">
-            <Github className="w-4 h-4" />
-            View Code
+          <Button variant="ghost" size="sm" className="gap-2" asChild>
+            <a href={project.githubLink || "#"} target="_blank" rel="noopener noreferrer">
+              <Github className="w-4 h-4" />
+              View Code
+            </a>
           </Button>
         )}
         {project.pdfLink && (
