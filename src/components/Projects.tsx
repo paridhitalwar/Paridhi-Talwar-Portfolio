@@ -5,6 +5,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 const Projects = () => {
   const softwareProjects = [
     {
+      title: "AI Personal Knowledge Base Assistant",
+      description: "Multi-source knowledge base that ingests documents from Notion and Google Drive, uses semantic search with embeddings to find relevant chunks, and leverages Groq LLM for context-aware AI-powered answers through a clean Streamlit interface.",
+      tags: ["Notion API", "Google Drive", "Groq LLM", "Embeddings", "Streamlit"],
+      impact: "Semantic search & AI-powered answers",
+      hasGithub: true,
+      githubLink: "https://github.com/paridhitalwar/AI-Personal-Knowledge-Base-Assistant",
+    },
+    {
       title: "Smart Fridge App",
       description: "AI-powered meal management app reducing food waste by 10% through inventory tracking, calendar-based meal planning, and LLM-powered recipe suggestions using Gemini.",
       tags: ["Python", "React", "Flask", "MongoDB", "GenAI"],
@@ -53,14 +61,6 @@ const Projects = () => {
 
   const pmProjects = [
     {
-      title: "AI Personal Knowledge Base Assistant",
-      description: "Multi-source knowledge base that ingests documents from Notion and Google Drive, uses semantic search with embeddings to find relevant chunks, and leverages Groq LLM for context-aware AI-powered answers through a clean Streamlit interface.",
-      tags: ["Notion API", "Google Drive", "Groq LLM", "Embeddings", "Streamlit"],
-      impact: "Semantic search & AI-powered answers",
-      hasGithub: true,
-      githubLink: "https://github.com/paridhitalwar/AI-Personal-Knowledge-Base-Assistant",
-    },
-    {
       title: "ChatGPT Market Research Case Study",
       description: "Comprehensive market research analysis for ChatGPT, including competitive landscape, market sizing, and strategic recommendations for product positioning.",
       tags: ["Market Research", "Competitive Analysis", "Strategy"],
@@ -78,7 +78,7 @@ const Projects = () => {
     },
   ];
 
-  const ProjectCard = ({ project }: { project: typeof softwareProjects[0] & { pdfLink?: string; githubLink?: string } }) => (
+  const ProjectCard = ({ project }: { project: { title: string; description: string; tags: string[]; impact: string; hasGithub: boolean; pdfLink?: string; githubLink?: string } }) => (
     <div className="p-8 rounded-2xl card-gradient border border-border hover:border-primary/30 transition-all duration-300 group">
       <h3 className="font-display text-2xl font-semibold mb-3 group-hover:text-primary transition-colors">
         {project.title}
@@ -140,7 +140,7 @@ const Projects = () => {
           <TabsList className="grid w-full grid-cols-3 mb-8">
             <TabsTrigger value="software" className="gap-2">
               <Code className="w-4 h-4" />
-              Software
+              Software/AI
             </TabsTrigger>
             <TabsTrigger value="data" className="gap-2">
               <Database className="w-4 h-4" />
