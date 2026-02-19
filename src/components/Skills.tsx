@@ -2,7 +2,7 @@ const Skills = () => {
   const skillCategories = [
     {
       title: "Product Management",
-      skills: ["Agile & Scrum", "Sprint Planning", "Stakeholder Management", "Roadmap Strategy", "Risk Management"],
+      skills: ["Product Strategy", "PRD", "Product Growth", "Wireframing", "A/B Testing", "Agile & Scrum", "Sprint Planning", "Stakeholder Management", "Roadmap Strategy", "Risk Management"],
     },
     {
       title: "Technical",
