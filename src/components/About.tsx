@@ -1,14 +1,8 @@
-import { GraduationCap, Award, BookOpen } from "lucide-react";
+import { GraduationCap, Award } from "lucide-react";
 import headshot from "@/assets/headshot.png";
 
 const About = () => {
   const education = [
-    {
-      degree: "MBA - Data Science (Online)",
-      school: "Amity University, India",
-      year: "2025 - 2027",
-      icon: BookOpen,
-    },
     {
       degree: "MS in Computer Science",
       school: "Boston University, USA",
