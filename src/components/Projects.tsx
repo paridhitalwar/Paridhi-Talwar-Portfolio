@@ -85,9 +85,17 @@ const Projects = () => {
       hasGithub: false,
       pdfLink: "/documents/chatgpt-user-research.pdf",
     },
+    {
+      title: "AI Personal Knowledge Base Assistant – PM Case Study",
+      description: "Product case study exploring the vision, user problem, strategy, and go-to-market approach behind building an AI-powered personal knowledge base that ingests documents from multiple sources and delivers context-aware answers.",
+      tags: ["Product Strategy", "AI/ML Product", "Case Study", "GTM"],
+      impact: "End-to-end product thinking",
+      hasGithub: false,
+      substackLink: "https://substack.com/@paridhitalwar/note/p-188468366",
+    },
   ];
 
-  const ProjectCard = ({ project }: { project: { title: string; description: string; tags: string[]; impact: string; hasGithub: boolean; pdfLink?: string; githubLink?: string; prototypeLink?: string } }) => (
+  const ProjectCard = ({ project }: { project: { title: string; description: string; tags: string[]; impact: string; hasGithub: boolean; pdfLink?: string; githubLink?: string; prototypeLink?: string; substackLink?: string } }) => (
     <div className="p-8 rounded-2xl card-gradient border border-border hover:border-primary/30 transition-all duration-300 group">
       <h3 className="font-display text-2xl font-semibold mb-3 group-hover:text-primary transition-colors">
         {project.title}
@@ -134,6 +142,14 @@ const Projects = () => {
             <a href={project.prototypeLink} target="_blank" rel="noopener noreferrer">
               <ExternalLink className="w-4 h-4" />
               View Prototype
+            </a>
+          </Button>
+        )}
+        {project.substackLink && (
+          <Button variant="ghost" size="sm" className="gap-2" asChild>
+            <a href={project.substackLink} target="_blank" rel="noopener noreferrer">
+              <ExternalLink className="w-4 h-4" />
+              Read on Substack
             </a>
           </Button>
         )}
