@@ -9,7 +9,6 @@ Personal portfolio website for **Paridhi Talwar** — a Product Manager and AI E
 ## Highlights
 
 - 🎓 **MS in Computer Science** — Boston University
-- 📚 **MBA in Data Science** (ongoing) — Amity University
 - 🚀 Experience as a Founding Product Manager & Engineer at early-stage startups
 - 🤖 Expertise in RAG pipelines, AI assistants, and product strategy
 
