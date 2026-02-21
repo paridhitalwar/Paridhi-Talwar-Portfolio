@@ -27,7 +27,7 @@ const Hero = () => {
           </p>
           
           <p className="text-muted-foreground text-base max-w-xl mx-auto mb-12 animate-fade-up stagger-2">
-            MS in Computer Science from Boston University • MBA in Data Science (ongoing) • 
+            MS in Computer Science from Boston University • 
             Passionate about building AI-powered products that create real impact.
           </p>
           
