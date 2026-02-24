@@ -48,7 +48,7 @@ const About = () => {
               <p>
                 My journey spans from building RAG pipelines and AI assistants to defining product 
                 roadmaps and leading cross-functional teams. I'm passionate about creating AI-powered 
-                products that deliver measurable impact—whether that's saving users 5+ hours weekly 
+                products that deliver measurable impact, whether that's saving users 5+ hours weekly 
                 or achieving 70%+ forecast accuracy.
               </p>
             </div>
