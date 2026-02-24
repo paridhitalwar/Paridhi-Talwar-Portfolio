@@ -1,7 +1,38 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Mail, MapPin, Linkedin, Github } from "lucide-react";
+import { Mail, MapPin, Send, Linkedin, Github } from "lucide-react";
+import { z } from "zod";
+import { toast } from "sonner";
+
+const contactSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+  message: z.string().trim().min(1, "Message is required").max(1000, "Message must be less than 1000 characters"),
+});
 
 const Contact = () => {
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const result = contactSchema.safeParse(formData);
+    if (!result.success) {
+      const fieldErrors: Record<string, string> = {};
+      result.error.errors.forEach((err) => {
+        if (err.path[0]) fieldErrors[err.path[0] as string] = err.message;
+      });
+      setErrors(fieldErrors);
+      return;
+    }
+    setErrors({});
+    const subject = encodeURIComponent(`Portfolio Contact from ${result.data.name}`);
+    const body = encodeURIComponent(`Name: ${result.data.name}\nEmail: ${result.data.email}\n\n${result.data.message}`);
+    window.location.href = `mailto:paridhitalwar2@gmail.com?subject=${subject}&body=${body}`;
+    toast.success("Opening your email client...");
+    setFormData({ name: "", email: "", message: "" });
+  };
+
   return (
     <section id="contact" className="py-24 relative">
       <div className="container mx-auto px-6">
@@ -19,7 +50,8 @@ const Contact = () => {
             </p>
           </div>
 
-          <div className="max-w-md mx-auto">
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* Contact info */}
             <div className="space-y-6">
               <div className="flex items-start gap-4 p-4 rounded-xl bg-card border border-border">
                 <div className="p-3 rounded-xl bg-primary/10 text-primary">
@@ -62,6 +94,47 @@ const Contact = () => {
                 </div>
               </div>
             </div>
+
+            {/* Contact form */}
+            <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  maxLength={100}
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="w-full px-5 py-4 rounded-xl bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
+                />
+                {errors.name && <p className="text-destructive text-sm mt-1">{errors.name}</p>}
+              </div>
+              <div>
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  maxLength={255}
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full px-5 py-4 rounded-xl bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
+                />
+                {errors.email && <p className="text-destructive text-sm mt-1">{errors.email}</p>}
+              </div>
+              <div>
+                <textarea
+                  rows={4}
+                  placeholder="Your Message"
+                  maxLength={1000}
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  className="w-full px-5 py-4 rounded-xl bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all resize-none"
+                />
+                {errors.message && <p className="text-destructive text-sm mt-1">{errors.message}</p>}
+              </div>
+              <Button type="submit" variant="hero" size="lg" className="w-full gap-2 rounded-full">
+                <Send className="w-5 h-5" />
+                Send Message
+              </Button>
+            </form>
           </div>
         </div>
       </div>
