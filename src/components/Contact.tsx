@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Mail, MapPin, Send, Linkedin, Github } from "lucide-react";
+import { Mail, MapPin, Linkedin, Github } from "lucide-react";
 
 const Contact = () => {
   return (
@@ -19,8 +19,7 @@ const Contact = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Contact info */}
+          <div className="max-w-md mx-auto">
             <div className="space-y-6">
               <div className="flex items-start gap-4 p-4 rounded-xl bg-card border border-border">
                 <div className="p-3 rounded-xl bg-primary/10 text-primary">
@@ -63,35 +62,6 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-
-            {/* Contact form */}
-            <form className="space-y-5">
-              <div>
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  className="w-full px-5 py-4 rounded-xl bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
-                />
-              </div>
-              <div>
-                <input
-                  type="email"
-                  placeholder="Your Email"
-                  className="w-full px-5 py-4 rounded-xl bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
-                />
-              </div>
-              <div>
-                <textarea
-                  rows={4}
-                  placeholder="Your Message"
-                  className="w-full px-5 py-4 rounded-xl bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all resize-none"
-                />
-              </div>
-              <Button variant="hero" size="lg" className="w-full gap-2 rounded-full">
-                <Send className="w-5 h-5" />
-                Send Message
-              </Button>
-            </form>
           </div>
         </div>
       </div>
