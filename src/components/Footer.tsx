@@ -1,14 +1,14 @@
 const Footer = () => {
   return (
-    <footer className="py-12 border-t border-border">
+    <footer className="py-10 border-t border-border bg-card/30">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <p className="font-display text-2xl font-extrabold tracking-tight">
-            PT<span className="text-primary">.</span>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="font-display text-lg font-medium text-gradient">
+            Paridhi Talwar
           </p>
           
           <p className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} Paridhi Talwar. All rights reserved.
+            © {new Date().getFullYear()} All rights reserved.
           </p>
 
           <p className="text-muted-foreground text-sm">

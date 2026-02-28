@@ -1,7 +1,6 @@
-import { Github, Code, Database, Users, FileDown, ExternalLink, ArrowUpRight } from "lucide-react";
+import { Github, Code, Database, Users, FileDown, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { motion } from "framer-motion";
 
 const Projects = () => {
   const softwareProjects = [
@@ -96,29 +95,17 @@ const Projects = () => {
     },
   ];
 
-  const ProjectCard = ({ project, index }: { project: { title: string; description: string; tags: string[]; impact: string; hasGithub: boolean; pdfLink?: string; githubLink?: string; prototypeLink?: string; substackLink?: string }; index: number }) => (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.1 }}
-      className="group p-8 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-500 hover:shadow-[var(--shadow-dramatic)] relative overflow-hidden"
-    >
-      {/* Hover accent */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-
-      <div className="flex items-start justify-between mb-4">
-        <h3 className="font-display text-xl font-bold group-hover:text-primary transition-colors pr-4">
-          {project.title}
-        </h3>
-        <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:-translate-y-1 group-hover:translate-x-1 transition-all flex-shrink-0" />
-      </div>
+  const ProjectCard = ({ project }: { project: { title: string; description: string; tags: string[]; impact: string; hasGithub: boolean; pdfLink?: string; githubLink?: string; prototypeLink?: string; substackLink?: string } }) => (
+    <div className="p-8 rounded-2xl card-gradient border border-border hover:border-primary/30 transition-all duration-300 group">
+      <h3 className="font-display text-2xl font-semibold mb-3 group-hover:text-primary transition-colors">
+        {project.title}
+      </h3>
       
-      <p className="text-muted-foreground mb-5 leading-relaxed text-sm">
+      <p className="text-muted-foreground mb-4 leading-relaxed">
         {project.description}
       </p>
 
-      <div className="inline-block px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold mb-5">
+      <div className="inline-block px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
         {project.impact}
       </div>
 
@@ -133,9 +120,9 @@ const Projects = () => {
         ))}
       </div>
 
-      <div className="flex gap-2 flex-wrap">
+      <div className="flex gap-2">
         {project.hasGithub && (
-          <Button variant="ghost" size="sm" className="gap-2 text-xs" asChild>
+          <Button variant="ghost" size="sm" className="gap-2" asChild>
             <a href={project.githubLink || "#"} target="_blank" rel="noopener noreferrer">
               <Github className="w-4 h-4" />
               View Code
@@ -143,75 +130,65 @@ const Projects = () => {
           </Button>
         )}
         {project.pdfLink && (
-          <Button variant="ghost" size="sm" className="gap-2 text-xs" asChild>
+          <Button variant="ghost" size="sm" className="gap-2" asChild>
             <a href={project.pdfLink} target="_blank" rel="noopener noreferrer">
               <FileDown className="w-4 h-4" />
-              Case Study
+              View Case Study
             </a>
           </Button>
         )}
         {project.prototypeLink && (
-          <Button variant="ghost" size="sm" className="gap-2 text-xs" asChild>
+          <Button variant="ghost" size="sm" className="gap-2" asChild>
             <a href={project.prototypeLink} target="_blank" rel="noopener noreferrer">
               <ExternalLink className="w-4 h-4" />
-              Prototype
+              View Prototype
             </a>
           </Button>
         )}
         {project.substackLink && (
-          <Button variant="ghost" size="sm" className="gap-2 text-xs" asChild>
+          <Button variant="ghost" size="sm" className="gap-2" asChild>
             <a href={project.substackLink} target="_blank" rel="noopener noreferrer">
               <ExternalLink className="w-4 h-4" />
-              Substack
+              Read on Substack
             </a>
           </Button>
         )}
       </div>
-    </motion.div>
+    </div>
   );
 
   return (
-    <section id="projects" className="py-32 relative">
+    <section id="projects" className="py-24 relative">
       <div className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          className="flex items-center gap-4 mb-16"
-        >
-          <span className="text-primary font-display font-bold text-sm tracking-[0.3em] uppercase">Portfolio</span>
-          <div className="h-px flex-1 bg-border" />
-        </motion.div>
+        <div className="text-center mb-16">
+          <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">
+            Portfolio
+          </p>
+          <h2 className="font-display text-4xl md:text-5xl font-semibold">
+            Featured <span className="text-gradient">Projects</span>
+          </h2>
+        </div>
 
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="font-display text-4xl md:text-6xl font-extrabold mb-16"
-        >
-          Featured <span className="text-gradient">Projects</span>
-        </motion.h2>
-
-        <Tabs defaultValue="software" className="max-w-5xl">
-          <TabsList className="grid w-full grid-cols-3 mb-10 bg-secondary/50 p-1 rounded-full">
-            <TabsTrigger value="software" className="gap-2 rounded-full data-[state=active]:bg-foreground data-[state=active]:text-background font-semibold text-sm">
+        <Tabs defaultValue="software" className="max-w-5xl mx-auto">
+          <TabsList className="grid w-full grid-cols-3 mb-8">
+            <TabsTrigger value="software" className="gap-2">
               <Code className="w-4 h-4" />
               Software/AI
             </TabsTrigger>
-            <TabsTrigger value="data" className="gap-2 rounded-full data-[state=active]:bg-foreground data-[state=active]:text-background font-semibold text-sm">
+            <TabsTrigger value="data" className="gap-2">
               <Database className="w-4 h-4" />
               Data
             </TabsTrigger>
-            <TabsTrigger value="pm" className="gap-2 rounded-full data-[state=active]:bg-foreground data-[state=active]:text-background font-semibold text-sm">
+            <TabsTrigger value="pm" className="gap-2">
               <Users className="w-4 h-4" />
-              Product
+              Product Management
             </TabsTrigger>
           </TabsList>
 
           <TabsContent value="software">
             <div className="grid md:grid-cols-2 gap-8">
               {softwareProjects.map((project, index) => (
-                <ProjectCard key={index} project={project} index={index} />
+                <ProjectCard key={index} project={project} />
               ))}
             </div>
           </TabsContent>
@@ -219,7 +196,7 @@ const Projects = () => {
           <TabsContent value="data">
             <div className="grid md:grid-cols-2 gap-8">
               {dataProjects.map((project, index) => (
-                <ProjectCard key={index} project={project} index={index} />
+                <ProjectCard key={index} project={project} />
               ))}
             </div>
           </TabsContent>
@@ -227,7 +204,7 @@ const Projects = () => {
           <TabsContent value="pm">
             <div className="grid md:grid-cols-2 gap-8">
               {pmProjects.map((project, index) => (
-                <ProjectCard key={index} project={project} index={index} />
+                <ProjectCard key={index} project={project} />
               ))}
             </div>
           </TabsContent>
