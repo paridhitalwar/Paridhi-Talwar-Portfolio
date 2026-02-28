@@ -1,4 +1,5 @@
-import { Briefcase, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Experience = () => {
   const experiences = [
@@ -79,66 +80,73 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-24 relative bg-card/50">
+    <section id="experience" className="py-32 relative">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">
-            Experience
-          </p>
-          <h2 className="font-display text-4xl md:text-5xl font-semibold">
-            Professional <span className="text-gradient">Journey</span>
-          </h2>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="flex items-center gap-4 mb-16"
+        >
+          <span className="text-primary font-display font-bold text-sm tracking-[0.3em] uppercase">Experience</span>
+          <div className="h-px flex-1 bg-border" />
+        </motion.div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-8 top-0 bottom-0 w-px bg-border hidden md:block" />
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-display text-4xl md:text-6xl font-extrabold mb-16"
+        >
+          Professional <span className="text-gradient">Journey</span>
+        </motion.h2>
 
-            <div className="space-y-8">
-              {experiences.map((exp, index) => (
-                <div key={index} className="relative pl-0 md:pl-20">
-                  {/* Timeline dot */}
-                  <div className="absolute left-6 top-8 w-4 h-4 rounded-full bg-primary hidden md:block" />
-                  
-                  <div className="p-6 md:p-8 rounded-2xl card-gradient border border-border hover:border-primary/30 transition-all duration-300 group">
-                    <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
-                      <div>
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className={`px-2.5 py-0.5 text-xs font-medium rounded-full ${
-                            exp.type === "pm" 
-                              ? "bg-primary/10 text-primary" 
-                              : "bg-secondary text-secondary-foreground"
-                          }`}>
-                            {exp.type === "pm" ? "Product" : "Engineering"}
-                          </span>
-                        </div>
-                        <h3 className="font-display text-xl font-semibold group-hover:text-primary transition-colors">
-                          {exp.title}
-                        </h3>
-                        <p className="text-foreground font-medium">{exp.company}</p>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-primary font-medium text-sm">{exp.period}</p>
-                        <p className="text-muted-foreground text-sm flex items-center gap-1 justify-end">
-                          <MapPin className="w-3 h-3" />
-                          {exp.location}
-                        </p>
-                      </div>
+        <div className="max-w-4xl">
+          <div className="space-y-8">
+            {experiences.map((exp, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="relative pl-8 line-accent"
+              >
+                <div className="p-8 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-500 group hover:shadow-[var(--shadow-dramatic)]">
+                  <div className="flex flex-wrap items-start justify-between gap-4 mb-5">
+                    <div>
+                      <span className={`inline-block px-3 py-1 text-xs font-bold rounded-full mb-2 ${
+                        exp.type === "pm" 
+                          ? "bg-primary/10 text-primary" 
+                          : "bg-secondary text-secondary-foreground"
+                      }`}>
+                        {exp.type === "pm" ? "Product" : "Engineering"}
+                      </span>
+                      <h3 className="font-display text-xl font-bold group-hover:text-primary transition-colors">
+                        {exp.title}
+                      </h3>
+                      <p className="text-foreground font-semibold">{exp.company}</p>
                     </div>
-                    
-                    <ul className="space-y-2">
-                      {exp.highlights.map((highlight, hIndex) => (
-                        <li key={hIndex} className="text-muted-foreground text-sm flex items-start gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                          {highlight}
-                        </li>
-                      ))}
-                    </ul>
+                    <div className="text-right">
+                      <p className="text-primary font-semibold text-sm">{exp.period}</p>
+                      <p className="text-muted-foreground text-sm flex items-center gap-1 justify-end">
+                        <MapPin className="w-3 h-3" />
+                        {exp.location}
+                      </p>
+                    </div>
                   </div>
+                  
+                  <ul className="space-y-2.5">
+                    {exp.highlights.map((highlight, hIndex) => (
+                      <li key={hIndex} className="text-muted-foreground text-sm flex items-start gap-3">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              ))}
-            </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
