@@ -17,7 +17,7 @@ const ExperiencePage = () => {
         />
       </Helmet>
       
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-background noise">
         <Navbar />
         <main className="pt-20">
           <Experience />

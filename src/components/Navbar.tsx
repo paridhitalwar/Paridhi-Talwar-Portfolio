@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -36,21 +37,14 @@ const Navbar = () => {
     if (isAnchor) {
       e.preventDefault();
       const sectionId = href.replace("/#", "");
-      
       if (location.pathname === "/") {
-        // Already on home page, just scroll
         const element = document.getElementById(sectionId);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
+        if (element) element.scrollIntoView({ behavior: "smooth" });
       } else {
-        // Navigate to home then scroll
         navigate("/");
         setTimeout(() => {
           const element = document.getElementById(sectionId);
-          if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
-          }
+          if (element) element.scrollIntoView({ behavior: "smooth" });
         }, 100);
       }
     }
@@ -60,7 +54,7 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-background/90 backdrop-blur-lg border-b border-border shadow-soft"
+          ? "glass-strong shadow-lg shadow-background/50"
           : "bg-transparent"
       }`}
     >
@@ -68,9 +62,9 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <Link
             to="/"
-            className="font-display text-2xl font-semibold text-gradient"
+            className="font-display text-2xl font-extrabold text-gradient"
           >
-            Paridhi Talwar
+            PT.
           </Link>
           
           <div className="hidden md:flex items-center gap-8">
@@ -79,10 +73,10 @@ const Navbar = () => {
                 key={link.href}
                 to={link.href}
                 onClick={(e) => handleNavClick(e, link.href, link.isAnchor)}
-                className={`transition-all duration-300 text-sm text-primary hover:opacity-80 ${
+                className={`transition-all duration-300 text-sm tracking-wide ${
                   isActive(link.href, link.isAnchor)
-                    ? "font-semibold"
-                    : "font-medium"
+                    ? "text-primary font-semibold"
+                    : "text-muted-foreground hover:text-foreground font-medium"
                 }`}
               >
                 {link.label}
@@ -92,42 +86,47 @@ const Navbar = () => {
           
           <Link
             to="/contact"
-            className="hidden md:inline-flex bg-primary text-primary-foreground px-5 py-2.5 rounded-full text-sm font-medium hover:scale-105 transition-transform duration-300 shadow-soft"
+            className="hidden md:inline-flex bg-primary text-primary-foreground px-5 py-2.5 rounded-full text-sm font-semibold hover:scale-105 transition-transform duration-300 glow"
           >
             Get In Touch
           </Link>
 
-          {/* Mobile menu button */}
           <button
-            className="md:hidden p-2"
+            className="md:hidden p-2 text-foreground"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
 
-        {/* Mobile nav */}
-        {mobileOpen && (
-          <div className="md:hidden pt-4 pb-2">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                to={link.href}
-                onClick={(e) => {
-                  handleNavClick(e, link.href, link.isAnchor);
-                  setMobileOpen(false);
-                }}
-                className={`block py-3 transition-all text-primary hover:opacity-80 ${
-                  isActive(link.href, link.isAnchor)
-                    ? "font-semibold"
-                    : "font-medium"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
-        )}
+        <AnimatePresence>
+          {mobileOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden pt-4 pb-2 overflow-hidden"
+            >
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  onClick={(e) => {
+                    handleNavClick(e, link.href, link.isAnchor);
+                    setMobileOpen(false);
+                  }}
+                  className={`block py-3 transition-all text-sm tracking-wide ${
+                    isActive(link.href, link.isAnchor)
+                      ? "text-primary font-semibold"
+                      : "text-muted-foreground hover:text-foreground font-medium"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </nav>
   );

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Mail, MapPin, Send, Linkedin, Github } from "lucide-react";
 import { z } from "zod";
 import { toast } from "sonner";
+import { motion } from "framer-motion";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
@@ -34,63 +35,79 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 relative">
+    <section id="contact" className="py-28 relative">
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[120px]" />
+
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-primary font-medium tracking-[0.3em] uppercase text-xs mb-4"
+            >
               Get In Touch
-            </p>
-            <h2 className="font-display text-4xl md:text-5xl font-semibold mb-6">
+            </motion.p>
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="font-display text-4xl md:text-6xl font-bold mb-6"
+            >
               Let's work <span className="text-gradient">together</span>
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="text-muted-foreground text-lg max-w-2xl mx-auto"
+            >
               I'm actively looking for Product Management opportunities. 
               Let's discuss how I can bring value to your team.
-            </p>
+            </motion.p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="grid md:grid-cols-2 gap-12"
+          >
             {/* Contact info */}
             <div className="space-y-6">
-              <div className="flex items-start gap-4 p-4 rounded-xl bg-card border border-border">
+              <div className="flex items-start gap-4 p-5 rounded-2xl glass">
                 <div className="p-3 rounded-xl bg-primary/10 text-primary">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-1">Location</h4>
-                  <p className="text-muted-foreground">India (Open to Relocation)</p>
+                  <h4 className="font-display font-bold mb-1">Location</h4>
+                  <p className="text-muted-foreground text-sm">India (Open to Relocation)</p>
                 </div>
               </div>
 
               <div className="pt-4">
-                <p className="text-muted-foreground mb-4 text-sm">Connect with me</p>
+                <p className="text-muted-foreground mb-4 text-sm tracking-wide">Connect with me</p>
                 <div className="flex gap-3">
-                  <a
-                    href="mailto:paridhitalwar2@gmail.com"
-                    className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-secondary text-secondary-foreground text-sm font-medium hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
-                  >
-                    <Mail className="w-4 h-4" />
-                    Email
-                  </a>
-                  <a
-                    href="https://linkedin.com/in/paridhi-talwar/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-secondary text-secondary-foreground text-sm font-medium hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
-                  >
-                    <Linkedin className="w-4 h-4" />
-                    LinkedIn
-                  </a>
-                  <a
-                    href="https://github.com/paridhitalwar"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-secondary text-secondary-foreground text-sm font-medium hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
-                  >
-                    <Github className="w-4 h-4" />
-                    GitHub
-                  </a>
+                  {[
+                    { href: "mailto:paridhitalwar2@gmail.com", icon: Mail, label: "Email" },
+                    { href: "https://linkedin.com/in/paridhi-talwar/", icon: Linkedin, label: "LinkedIn" },
+                    { href: "https://github.com/paridhitalwar", icon: Github, label: "GitHub" },
+                  ].map((link) => (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      target={link.href.startsWith("mailto") ? undefined : "_blank"}
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-4 py-2.5 rounded-full glass text-muted-foreground text-sm font-medium hover:text-primary hover:border-primary/30 transition-all duration-300"
+                    >
+                      <link.icon className="w-4 h-4" />
+                      {link.label}
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>
@@ -104,7 +121,7 @@ const Contact = () => {
                   maxLength={100}
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-5 py-4 rounded-xl bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
+                  className="w-full px-5 py-4 rounded-xl glass text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-all"
                 />
                 {errors.name && <p className="text-destructive text-sm mt-1">{errors.name}</p>}
               </div>
@@ -115,7 +132,7 @@ const Contact = () => {
                   maxLength={255}
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-5 py-4 rounded-xl bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
+                  className="w-full px-5 py-4 rounded-xl glass text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-all"
                 />
                 {errors.email && <p className="text-destructive text-sm mt-1">{errors.email}</p>}
               </div>
@@ -126,16 +143,16 @@ const Contact = () => {
                   maxLength={1000}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-5 py-4 rounded-xl bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all resize-none"
+                  className="w-full px-5 py-4 rounded-xl glass text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-all resize-none"
                 />
                 {errors.message && <p className="text-destructive text-sm mt-1">{errors.message}</p>}
               </div>
-              <Button type="submit" variant="hero" size="lg" className="w-full gap-2 rounded-full">
+              <Button type="submit" variant="hero" size="lg" className="w-full gap-2 rounded-full glow">
                 <Send className="w-5 h-5" />
                 Send Message
               </Button>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
