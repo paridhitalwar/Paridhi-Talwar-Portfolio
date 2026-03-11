@@ -1,6 +1,7 @@
 import { Github, Code, Database, Users, FileDown, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { motion } from "framer-motion";
 
 const Projects = () => {
   const softwareProjects = [
@@ -95,13 +96,19 @@ const Projects = () => {
     },
   ];
 
-  const ProjectCard = ({ project }: { project: { title: string; description: string; tags: string[]; impact: string; hasGithub: boolean; pdfLink?: string; githubLink?: string; prototypeLink?: string; substackLink?: string } }) => (
-    <div className="p-8 rounded-2xl card-gradient border border-border hover:border-primary/30 transition-all duration-300 group">
-      <h3 className="font-display text-2xl font-semibold mb-3 group-hover:text-primary transition-colors">
+  const ProjectCard = ({ project, index }: { project: { title: string; description: string; tags: string[]; impact: string; hasGithub: boolean; pdfLink?: string; githubLink?: string; prototypeLink?: string; substackLink?: string }, index: number }) => (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.1 * index }}
+      className="p-8 rounded-2xl glass hover:border-primary/30 transition-all duration-500 group"
+    >
+      <h3 className="font-display text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
         {project.title}
       </h3>
       
-      <p className="text-muted-foreground mb-4 leading-relaxed">
+      <p className="text-muted-foreground mb-4 leading-relaxed text-sm">
         {project.description}
       </p>
 
@@ -113,7 +120,7 @@ const Projects = () => {
         {project.tags.map((tag, tagIndex) => (
           <span
             key={tagIndex}
-            className="px-3 py-1 text-xs font-medium bg-secondary text-secondary-foreground rounded-full"
+            className="px-3 py-1 text-xs font-medium glass text-muted-foreground rounded-full"
           >
             {tag}
           </span>
@@ -122,7 +129,7 @@ const Projects = () => {
 
       <div className="flex gap-2">
         {project.hasGithub && (
-          <Button variant="ghost" size="sm" className="gap-2" asChild>
+          <Button variant="ghost" size="sm" className="gap-2 text-muted-foreground hover:text-primary" asChild>
             <a href={project.githubLink || "#"} target="_blank" rel="noopener noreferrer">
               <Github className="w-4 h-4" />
               View Code
@@ -130,7 +137,7 @@ const Projects = () => {
           </Button>
         )}
         {project.pdfLink && (
-          <Button variant="ghost" size="sm" className="gap-2" asChild>
+          <Button variant="ghost" size="sm" className="gap-2 text-muted-foreground hover:text-primary" asChild>
             <a href={project.pdfLink} target="_blank" rel="noopener noreferrer">
               <FileDown className="w-4 h-4" />
               View Case Study
@@ -138,7 +145,7 @@ const Projects = () => {
           </Button>
         )}
         {project.prototypeLink && (
-          <Button variant="ghost" size="sm" className="gap-2" asChild>
+          <Button variant="ghost" size="sm" className="gap-2 text-muted-foreground hover:text-primary" asChild>
             <a href={project.prototypeLink} target="_blank" rel="noopener noreferrer">
               <ExternalLink className="w-4 h-4" />
               View Prototype
@@ -146,7 +153,7 @@ const Projects = () => {
           </Button>
         )}
         {project.substackLink && (
-          <Button variant="ghost" size="sm" className="gap-2" asChild>
+          <Button variant="ghost" size="sm" className="gap-2 text-muted-foreground hover:text-primary" asChild>
             <a href={project.substackLink} target="_blank" rel="noopener noreferrer">
               <ExternalLink className="w-4 h-4" />
               Read on Substack
@@ -154,57 +161,70 @@ const Projects = () => {
           </Button>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 
   return (
-    <section id="projects" className="py-24 relative">
+    <section id="projects" className="py-28 relative">
+      <div className="absolute top-0 left-1/3 w-[400px] h-[400px] rounded-full bg-accent/5 blur-[120px]" />
+
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-primary font-medium tracking-[0.3em] uppercase text-xs mb-4"
+          >
             Portfolio
-          </p>
-          <h2 className="font-display text-4xl md:text-5xl font-semibold">
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="font-display text-4xl md:text-6xl font-bold"
+          >
             Featured <span className="text-gradient">Projects</span>
-          </h2>
+          </motion.h2>
         </div>
 
         <Tabs defaultValue="software" className="max-w-5xl mx-auto">
-          <TabsList className="grid w-full grid-cols-3 mb-8">
-            <TabsTrigger value="software" className="gap-2">
+          <TabsList className="grid w-full grid-cols-3 mb-8 glass rounded-full p-1">
+            <TabsTrigger value="software" className="gap-2 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
               <Code className="w-4 h-4" />
               Software/AI
             </TabsTrigger>
-            <TabsTrigger value="data" className="gap-2">
+            <TabsTrigger value="data" className="gap-2 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
               <Database className="w-4 h-4" />
               Data
             </TabsTrigger>
-            <TabsTrigger value="pm" className="gap-2">
+            <TabsTrigger value="pm" className="gap-2 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
               <Users className="w-4 h-4" />
               Product Management
             </TabsTrigger>
           </TabsList>
 
           <TabsContent value="software">
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-6">
               {softwareProjects.map((project, index) => (
-                <ProjectCard key={index} project={project} />
+                <ProjectCard key={index} project={project} index={index} />
               ))}
             </div>
           </TabsContent>
 
           <TabsContent value="data">
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-6">
               {dataProjects.map((project, index) => (
-                <ProjectCard key={index} project={project} />
+                <ProjectCard key={index} project={project} index={index} />
               ))}
             </div>
           </TabsContent>
 
           <TabsContent value="pm">
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-6">
               {pmProjects.map((project, index) => (
-                <ProjectCard key={index} project={project} />
+                <ProjectCard key={index} project={project} index={index} />
               ))}
             </div>
           </TabsContent>

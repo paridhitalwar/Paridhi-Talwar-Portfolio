@@ -1,4 +1,5 @@
 import { FileText, ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
 
 const publications = [
   {
@@ -19,46 +20,63 @@ const publications = [
 
 const Publications = () => {
   return (
-    <section id="publications" className="py-20 bg-secondary/30">
+    <section id="publications" className="py-28 relative">
+      <div className="absolute top-0 left-0 w-[400px] h-[400px] rounded-full bg-accent/5 blur-[120px]" />
+
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <span className="text-primary font-medium tracking-wider uppercase text-sm">
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-primary font-medium tracking-[0.3em] uppercase text-xs block mb-4"
+          >
             Research
-          </span>
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mt-2">
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="font-display text-4xl md:text-6xl font-bold"
+          >
             Publications
-          </h2>
+          </motion.h2>
         </div>
 
         <div className="max-w-3xl mx-auto space-y-6">
           {publications.map((pub, index) => (
-            <a
+            <motion.a
               key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 * index }}
               href={pub.doi}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block bg-card border border-border rounded-xl p-6 hover:shadow-lg hover:border-primary/30 transition-all duration-300"
+              className="group block glass rounded-2xl p-6 hover:border-primary/30 transition-all duration-500"
             >
               <div className="flex items-start gap-4">
-                <div className="p-3 bg-primary/10 rounded-lg text-primary shrink-0">
+                <div className="p-3 bg-primary/10 rounded-xl text-primary shrink-0">
                   <FileText className="w-6 h-6" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
+                  <h3 className="text-lg font-display font-bold text-foreground group-hover:text-primary transition-colors">
                     {pub.title}
                   </h3>
-                  <p className="text-muted-foreground mt-1">
+                  <p className="text-muted-foreground mt-1 text-sm">
                     {pub.conference} · {pub.date}
                   </p>
-                  {"description" in pub && pub.description && (
-                    <p className="text-sm text-muted-foreground mt-2 line-clamp-3">
+                  {pub.description && (
+                    <p className="text-sm text-muted-foreground/70 mt-2 line-clamp-3">
                       {pub.description}
                     </p>
                   )}
                 </div>
                 <ExternalLink className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
               </div>
-            </a>
+            </motion.a>
           ))}
         </div>
       </div>
