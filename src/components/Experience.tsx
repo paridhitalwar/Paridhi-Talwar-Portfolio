@@ -160,6 +160,7 @@ const Experience = () => {
                       ))}
                     </ul>
                   </div>
+                  </TiltCard>
                 </motion.div>
               ))}
             </div>
