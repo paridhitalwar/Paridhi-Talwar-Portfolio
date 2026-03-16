@@ -6,6 +6,7 @@ import Skills from "@/components/Skills";
 import Footer from "@/components/Footer";
 import ChatBot from "@/components/ChatBot";
 import CursorFollower from "@/components/CursorFollower";
+import ParticlePlayground from "@/components/ParticlePlayground";
 
 const Index = () => {
   return (
