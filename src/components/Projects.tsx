@@ -163,7 +163,6 @@ const Projects = () => {
         )}
       </div>
       </motion.div>
-    </TiltCard>
   );
 
   return (
