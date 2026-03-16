@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
+import MagneticText from "@/components/MagneticText";
 
 const Hero = () => {
   return (
