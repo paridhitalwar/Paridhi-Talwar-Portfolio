@@ -2,6 +2,7 @@ import { Github, Code, Database, Users, FileDown, ExternalLink } from "lucide-re
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion } from "framer-motion";
+import TiltCard from "@/components/TiltCard";
 
 const Projects = () => {
   const softwareProjects = [
