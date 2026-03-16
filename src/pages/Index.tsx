@@ -29,7 +29,7 @@ const Index = () => {
         <Footer />
         <ChatBot />
         <CursorFollower />
-        <ParticlePlayground />
+        <EasterEggGame />
       </div>
     </>
   );
