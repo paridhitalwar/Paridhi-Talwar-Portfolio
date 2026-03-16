@@ -1,5 +1,6 @@
 import { MapPin } from "lucide-react";
 import { motion } from "framer-motion";
+import TiltCard from "@/components/TiltCard";
 
 const Experience = () => {
   const experiences = [
