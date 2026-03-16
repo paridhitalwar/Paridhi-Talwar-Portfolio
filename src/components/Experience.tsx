@@ -1,5 +1,6 @@
 import { MapPin } from "lucide-react";
 import { motion } from "framer-motion";
+import TiltCard from "@/components/TiltCard";
 
 const Experience = () => {
   const experiences = [
@@ -123,6 +124,7 @@ const Experience = () => {
                   {/* Timeline dot */}
                   <div className="absolute left-6 top-8 w-4 h-4 rounded-full bg-primary shadow-lg shadow-primary/30 hidden md:block" />
                   
+                  <TiltCard className="rounded-2xl">
                   <div className="p-6 md:p-8 rounded-2xl glass hover:border-primary/30 transition-all duration-500 group">
                     <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
                       <div>
@@ -158,6 +160,7 @@ const Experience = () => {
                       ))}
                     </ul>
                   </div>
+                  </TiltCard>
                 </motion.div>
               ))}
             </div>

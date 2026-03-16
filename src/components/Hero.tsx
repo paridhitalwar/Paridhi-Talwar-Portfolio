@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
+import MagneticText from "@/components/MagneticText";
 
 const Hero = () => {
   return (
@@ -30,15 +31,12 @@ const Hero = () => {
             Open to Product Management Opportunities
           </motion.div>
           
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="font-display text-6xl md:text-8xl lg:text-9xl font-extrabold mb-8 leading-[0.9] tracking-tight text-foreground"
-          >
-            Hi, I'm{" "}
-            <span className="text-gradient">Paridhi</span>
-          </motion.h1>
+          <div className="font-display text-6xl md:text-8xl lg:text-9xl font-extrabold mb-8 leading-[0.9] tracking-tight text-foreground">
+            <MagneticText text="Hi, I'm" className="inline" as="span" />{" "}
+            <span className="text-gradient">
+              <MagneticText text="Paridhi" className="inline" as="span" />
+            </span>
+          </div>
           
           <motion.p
             initial={{ opacity: 0, y: 30 }}
