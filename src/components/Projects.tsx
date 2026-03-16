@@ -98,13 +98,14 @@ const Projects = () => {
   ];
 
   const ProjectCard = ({ project, index }: { project: { title: string; description: string; tags: string[]; impact: string; hasGithub: boolean; pdfLink?: string; githubLink?: string; prototypeLink?: string; substackLink?: string }, index: number }) => (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.1 * index }}
-      className="p-8 rounded-2xl glass hover:border-primary/30 transition-all duration-500 group"
-    >
+    <TiltCard className="rounded-2xl">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.1 * index }}
+        className="p-8 rounded-2xl glass hover:border-primary/30 transition-all duration-500 group h-full"
+      >
       <h3 className="font-display text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
         {project.title}
       </h3>
