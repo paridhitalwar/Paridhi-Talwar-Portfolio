@@ -63,6 +63,14 @@ const Projects = () => {
 
   const pmProjects = [
     {
+      title: "Unwrap – AI Gifting Companion",
+      description: "End-to-end product case study for an AI-powered gifting platform solving the $491B market's decision gap. Identified the 'Thoughtful Giver' persona through primary research (n=21), validated decision anxiety as the core problem, and designed a personality-first quiz flow using Gemini AI to deliver confident gift directions in under 5 minutes.",
+      tags: ["Product Strategy", "User Research", "AI/ML Product", "Market Sizing", "GTM"],
+      impact: "Targeting $62.6M SOM in India",
+      hasGithub: false,
+      pdfLink: "/documents/unwrap-gifting-ai.pdf",
+    },
+    {
       title: "ChatGPT Live Scratchpad – Voice UX Redesign",
       description: "End-to-end product ideation for enhancing ChatGPT Voice Mode with a private 'Whisper' input and real-time editable transcripts, addressing the control and privacy barriers preventing 70% of young professionals from adopting voice input.",
       tags: ["Product Ideation", "Wireframing", "UX Research", "Voice UI", "Metrics"],
