@@ -6,7 +6,9 @@ const GRID = 20;
 const CELL = 20;
 const WIDTH = GRID * CELL;
 const HEIGHT = GRID * CELL;
-const SPEED = 120;
+const INITIAL_SPEED = 200;
+const MIN_SPEED = 80;
+const SPEED_STEP = 5; // ms faster per food eaten
 
 type Point = { x: number; y: number };
 type Direction = "UP" | "DOWN" | "LEFT" | "RIGHT";
@@ -107,6 +109,7 @@ const SnakeGame = () => {
   const nextDirection = useRef<Direction>("RIGHT");
   const food = useRef<Point>(spawnFood([{ x: 10, y: 10 }]));
   const gameLoop = useRef<ReturnType<typeof setInterval>>();
+  const speed = useRef(INITIAL_SPEED);
 
   function spawnFood(snakeBody: Point[]): Point {
     let pos: Point;
@@ -121,6 +124,7 @@ const SnakeGame = () => {
     direction.current = "RIGHT";
     nextDirection.current = "RIGHT";
     food.current = spawnFood(snake.current);
+    speed.current = INITIAL_SPEED;
     setScore(0);
     setGameOver(false);
     setStarted(true);
@@ -220,7 +224,7 @@ const SnakeGame = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    gameLoop.current = setInterval(() => {
+    const tick = () => {
       direction.current = nextDirection.current;
       const head = { ...snake.current[0] };
       if (direction.current === "UP") head.y--;
@@ -251,12 +255,19 @@ const SnakeGame = () => {
           try { localStorage.setItem("snake-hs", String(newScore)); } catch {}
         }
         food.current = spawnFood(snake.current);
+        // Speed up
+        speed.current = Math.max(MIN_SPEED, speed.current - SPEED_STEP);
+        // Restart interval with new speed
+        if (gameLoop.current) clearInterval(gameLoop.current);
+        gameLoop.current = setInterval(tick, speed.current);
       } else {
         snake.current.pop();
       }
 
       draw(ctx);
-    }, SPEED);
+    };
+
+    gameLoop.current = setInterval(tick, speed.current);
 
     return () => { if (gameLoop.current) clearInterval(gameLoop.current); };
   }, [started, gameOver, score, highScore, draw]);
