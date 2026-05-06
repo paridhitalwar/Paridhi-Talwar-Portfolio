@@ -57,10 +57,10 @@ const EasterEggGame = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             className="fixed bottom-24 left-6 z-[9000] flex items-center gap-2 px-4 py-2 rounded-full glass text-xs text-muted-foreground cursor-none"
-            onClick={() => setShowHint(false)}
+            onClick={() => { setShowGame(true); setShowHint(false); }}
           >
             <Gamepad2 className="w-3.5 h-3.5 text-primary" />
-            <span>Try the Konami Code… ↑↑↓↓←→←→BA</span>
+            <span>🎮 Click to play Snake! (or type ↑↑↓↓←→←→BA)</span>
           </motion.div>
         )}
       </AnimatePresence>
