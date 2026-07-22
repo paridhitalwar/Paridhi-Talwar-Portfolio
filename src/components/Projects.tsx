@@ -138,7 +138,7 @@ const Projects = () => {
     },
   ];
 
-  const ProjectCard = ({ project, index }: { project: { title: string; description: string; tags: string[]; impact: string; hasGithub: boolean; pdfLink?: string; githubLink?: string; prototypeLink?: string; substackLink?: string }, index: number }) => (
+  const ProjectCard = ({ project, index }: { project: { title: string; description: string; tags: string[]; impact: string; hasGithub: boolean; pdfLink?: string; githubLink?: string; prototypeLink?: string; substackLink?: string; wireframeLink?: string }, index: number }) => (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -191,6 +191,14 @@ const Projects = () => {
             <a href={project.prototypeLink} target="_blank" rel="noopener noreferrer">
               <ExternalLink className="w-4 h-4" />
               View Prototype
+            </a>
+          </Button>
+        )}
+        {project.wireframeLink && (
+          <Button variant="ghost" size="sm" className="gap-2 text-muted-foreground hover:text-primary" asChild>
+            <a href={project.wireframeLink} target="_blank" rel="noopener noreferrer">
+              <FileDown className="w-4 h-4" />
+              View Wireframes
             </a>
           </Button>
         )}
