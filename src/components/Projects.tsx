@@ -63,6 +63,39 @@ const Projects = () => {
 
   const pmProjects = [
     {
+      title: "Context Memory Dashboard – PRD",
+      description: "Product Requirements Document proposing a user-facing memory dashboard for AI assistants. Turns invisible cross-session memory into an editable settings surface with view, correct, and per-category control — grounded in user segments, journey maps, success metrics, and a phased alpha → beta → GA rollout.",
+      tags: ["PRD", "AI Product", "Privacy UX", "Metrics", "Rollout Strategy"],
+      impact: "Trust & control for AI memory",
+      hasGithub: false,
+      pdfLink: "/documents/context-memory-dashboard-prd.pdf",
+    },
+    {
+      title: "Flam Quest – Feature Proposal PRD",
+      description: "Feature proposal for Flam's app-less Web AR platform introducing a gamified 'Digital Passport' that turns one-off scans into repeat engagement through stamps, cross-brand quests, and instant rewards. Includes market validation, user journey, technical feasibility, phased rollout, and success metrics.",
+      tags: ["Feature PRD", "Gamification", "Web AR", "Retention", "GTM"],
+      impact: "Turning first scans into repeat behavior",
+      hasGithub: false,
+      pdfLink: "/documents/flam-feature-proposal-prd.pdf",
+      wireframeLink: "/documents/flam-prd-wireframe.pdf",
+    },
+    {
+      title: "Meesho Onboarding – UX Case Study",
+      description: "Self-directed UX teardown and redesign of Meesho's first-time seller onboarding flow. Combines heuristic evaluation, journey mapping, and low-fi wireframes to identify document-mismatch, silent-rejection, and status-visibility drop-offs — proposing three low-lift fixes mapped to expected funnel impact.",
+      tags: ["UX Research", "Heuristic Eval", "Wireframing", "Journey Mapping", "Onboarding"],
+      impact: "Reducing first-time seller drop-off",
+      hasGithub: false,
+      pdfLink: "/documents/meesho-ux-case-study.pdf",
+    },
+    {
+      title: "Notion – Product Teardown",
+      description: "Deep-dive teardown of Notion's all-in-one workspace covering product pillars, business model, pricing tiers, personas (Solo Builder, Startups, Enterprise), user journey, and strategic moats — closing with recommendations on AI pricing, seat management, database performance, and stateful agents.",
+      tags: ["Product Teardown", "Competitive Analysis", "Personas", "Pricing Strategy"],
+      impact: "Strategic product breakdown",
+      hasGithub: false,
+      pdfLink: "/documents/notion-product-teardown.pdf",
+    },
+    {
       title: "Unwrap – AI Gifting Companion",
       description: "End-to-end product case study for an AI-powered gifting platform solving the $491B market's decision gap. Identified the 'Thoughtful Giver' persona through primary research (n=21), validated decision anxiety as the core problem, and designed a personality-first quiz flow using Gemini AI to deliver confident gift directions in under 5 minutes.",
       tags: ["Product Strategy", "User Research", "AI/ML Product", "Market Sizing", "GTM"],
@@ -105,7 +138,7 @@ const Projects = () => {
     },
   ];
 
-  const ProjectCard = ({ project, index }: { project: { title: string; description: string; tags: string[]; impact: string; hasGithub: boolean; pdfLink?: string; githubLink?: string; prototypeLink?: string; substackLink?: string }, index: number }) => (
+  const ProjectCard = ({ project, index }: { project: { title: string; description: string; tags: string[]; impact: string; hasGithub: boolean; pdfLink?: string; githubLink?: string; prototypeLink?: string; substackLink?: string; wireframeLink?: string }, index: number }) => (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -158,6 +191,14 @@ const Projects = () => {
             <a href={project.prototypeLink} target="_blank" rel="noopener noreferrer">
               <ExternalLink className="w-4 h-4" />
               View Prototype
+            </a>
+          </Button>
+        )}
+        {project.wireframeLink && (
+          <Button variant="ghost" size="sm" className="gap-2 text-muted-foreground hover:text-primary" asChild>
+            <a href={project.wireframeLink} target="_blank" rel="noopener noreferrer">
+              <FileDown className="w-4 h-4" />
+              View Wireframes
             </a>
           </Button>
         )}
